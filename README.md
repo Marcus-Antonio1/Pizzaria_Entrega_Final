@@ -1,168 +1,175 @@
-Pizzaria (App mobile) 🍕📱
+# 🍕📱 Pizzaria — App Mobile (React Native + Expo 49)
 
-Aplicativo desenvolvido para trabalho da faculdade: sistema de pedidos de pizza (mobile) usando React Native + Expo (SDK 49) e Firebase como backend.
+Aplicativo desenvolvido para trabalho da faculdade, com foco em **sistema de pedidos de pizza**.  
+O projeto utiliza **React Native via Expo (SDK 49)** e **Firebase** para autenticação e persistência de dados.
 
-Visão geral
+---
 
-App mobile para fazer pedidos de pizza, gerenciar cardápio e realizar cadastros/login. Projeto feito com Expo (managed workflow). O Firebase é usado para autenticação e banco de dados (Realtime Database). O projeto foi entregue como parte da disciplina de IoT / Mobile — a interface do app está em React Native (Expo) e a persistência dos dados é feita diretamente pelo SDK do Firebase.
+## 📌 Visão Geral
 
-Tecnologias / Stack
+O app permite:
 
-Front-end (mobile): React Native via Expo (SDK 49)
+- Exibir cardápio de pizzas  
+- Realizar pedidos  
+- Cadastrar/logar usuários  
+- Gerenciar itens no carrinho  
 
-Linguagem: JavaScript (React)
+A interface é construída em **React Native (Expo)** e os dados são persistidos no **Firebase Realtime Database**.  
+O projeto foi entregue como parte da disciplina de **IoT / Mobile**.
 
-Backend / Banco: Firebase (Realtime Database / Auth) — via SDK JS modular (firebase).
+---
 
-Navegação: @react-navigation/*
+## 🛠 Tecnologias Utilizadas
 
-Outros libs: react-native-reanimated, react-native-gesture-handler, react-native-safe-area-context, react-native-screens, react-native-toast-message, entre outros.
+### **Frontend / Mobile**
+- React Native (Expo SDK 49)
+- JavaScript (React)
 
-Dependências essenciais (extraídas do package.json)
+### **Backend / Banco**
+- Firebase Authentication
+- Firebase Realtime Database  
+(Usando SDK Modular — firebase v9)
 
+### **Navegação**
+- @react-navigation/native  
+- @react-navigation/native-stack  
+- @react-navigation/drawer  
 
+### **Outras libs importantes**
+- react-native-reanimated  
+- react-native-gesture-handler  
+- react-native-screens  
+- react-native-safe-area-context  
+- react-native-maps  
+- react-native-toast-message  
+
+---
+
+## 📦 Dependências Principais (package.json)
+
+```txt
 expo: ~49.0.0
-
 react: 18.2.0
-
 react-native: 0.72.6
-
 firebase: ^9.6.11
-
 @react-navigation/native: ^6.1.6
-
 @react-navigation/native-stack: ^6.9.12
-
 @react-navigation/drawer: ^6.6.2
-
-react-native-gesture-handler: ~2.12.0
-
 react-native-reanimated: ~3.3.0
-
+react-native-gesture-handler: ~2.12.0
 react-native-screens: ~3.22.0
-
 react-native-safe-area-context: 4.6.3
-
 react-native-maps: 1.7.1
-
 react-native-toast-message: ^2.1.6
+```
 
-react-dom: 18.2.0
+## 🧰 Pré-requisitos
 
-react-native-web: ~0.19.6
+- Node.js 18 LTS (recomendado)
 
-Dev: @babel/core: ^7.23.0
+- npm ou yarn
 
-Observação: há outras dependências transitivas (dependências instaladas automaticamente pelo npm/expo), mas a lista acima cobre as libs que você precisa declarar/garantir compatibilidade.
+- Expo CLI (opcional — npx funciona)
 
-Pré-requisitos (local)
+- Android Studio → para rodar emulador Android
 
-Node.js: recomendo Node 18.x LTS (compatível com pacotes modernos).
+- Dispositivo Android com Expo Go na versão 49 (opção mais simples)
 
-npm (vem com Node) ou yarn (opcional).
+## ❗ Sobre iPhone / iOS (IMPORTANTE)
 
-Expo CLI: não é estritamente necessário instalar globalmente — você pode usar npx expo .... Se preferir global: npm install -g expo-cli ou npm install -g expo.
+O Expo Go da App Store NÃO é compatível com Expo SDK 49.
+Ou seja: o projeto NÃO roda diretamente no iPhone usando Expo Go.
 
-Android Studio (se for rodar no emulador Android) ou um dispositivo Android físico com o app Expo Go.
+Para rodar no iOS, é necessário usar:
 
-macOS + Xcode (necessário para rodar em simulador iOS local / construir para iOS) — veja observações abaixo sobre iPhone.
+Expo Dev Client (EAS Build)
+ou
+
+Build via Xcode (macOS)
 
 
-Como rodar (passo a passo)
-
-Clone o repositório:
-
+## ▶️ Como Rodar o Projeto
+### 1️⃣ Clone o repositório
+```
 git clone <seu-repo.git>
-cd <repo-pasta>/Pizzaria-main
+cd Pizzaria-main
+```
 
-
-Instale dependências:
-
+### 2️⃣ Instale as dependências
+```
 npm install
 # ou
 yarn install
+```
 
-
-Rodar o projeto (modo desenvolvimento):
-
+### 3️⃣ Inicie o servidor de desenvolvimento
+```
 npx expo start
-# ou se tem expo instalado globalmente
-expo start
+```
 
+Isso abrirá o painel do Expo (Metro Bundler) com QR Code.
 
-Isto abrirá a Metro devtools no navegador com o QR code.
+## 📱 Rodando no Android
+### ✔️ No celular Android (mais simples)
 
-Rodando no Android (físico)
+Instale Expo Go pela Play Store
 
-Instale Expo Go no celular (Android).
+Execute:
+```
+npx expo start
+```
 
-No terminal com expo start, escaneie o QR code com o app Expo Go (ou use a no terminal para tentar abrir no emulador Android).
+Escaneie o QR Code com o Expo Go
 
-Se usar emulador: abra um emulador pelo Android Studio e execute expo start e depois a.
+### ✔️ No emulador Android
 
-Rodando no iPhone / iOS — IMPORTANTE (Expo SDK 49)
+Abra o Android Studio
 
-Os pontos críticos sobre iOS:
+Inicie um emulador
 
-Nem sempre a versão do Expo Go disponível na App Store pública será compatível com a SDK 49 local. Eu observei que você comentou: "estou usando o expo 49 então o expo go no celular tem que ser essa versão também — se for a mais recente não dá certo e no iPhone não funciona por causa da versão precisa de um outro metodo" — isso é real: para SDK mais recentes, a versão pública do Expo Go pode estar desatualizada ou incompatível.
+No terminal do Expo, pressione:
+```
+a
+```
 
-Opções para iOS:
+## 🍏 Rodando no iOS (iPhone)
 
-Expo Dev Client (recomendado): gere um build de desenvolvimento com eas build --profile development --platform ios (requer conta Expo e EAS). Depois instale a dev client no aparelho — assim o app embute suas dependências nativas e roda como Expo Go customizado.
+### ⚠️ Expo SDK 49 NÃO roda no iPhone usando Expo Go.
 
-EAS Build / TestFlight: faça um build via EAS e distribua via TestFlight (ou instale o .ipa via TestFlight).
+Opções possíveis:
+### ✔️ 1. Expo Dev Client (recomendado)
 
-npx expo run:ios — funciona localmente em macOS com Xcode para rodar no simulador ou dispositivo (requer configuração com provisioning profile para dispositivo real).
+Crie um build de desenvolvimento:
+```
+eas build --profile development --platform ios
+```
 
-Em resumo: no iPhone, se o Expo Go público não for compatível, use Expo Dev Client (EAS) ou rode via Xcode / build para dispositivo.
+Depois instale no iPhone via QR Code ou TestFlight.
+Funciona como um “Expo Go personalizado”.
 
-Rodando para web
+### ✔️ 2. Rodar no simulador iOS via Xcode
+
+Somente no macOS:
+```
+npx expo run:ios
+```
+### ✔️ 3. EAS Build + TestFlight
+
+Build nativo para iOS e distribuição via TestFlight.
+
+## 💻 Rodando na Web (opcional)
+```
 npm run web
 # ou
-expo start --web
-
-
-Estrutura do projeto (resumo)
-
-App.js — ponto de entrada do app (Expo).
-
-screens/ — telas do app (login, cardápio, carrinho, pedidos etc.).
-
-routes/ / StackNavigator.js — navegação entre telas.
-
-firebaseconfig.js — inicialização do Firebase (Auth + Realtime Database).
-
-assets/ — imagens / ícones.
-
-utils/ — funções utilitárias.
-
-package.json — dependências do projeto.
-
-
-
-Observações e dicas (problemas comuns)
-
-Expo SDK x Expo Go: sempre verifique a compatibilidade — SDK 49 exige versão do Expo Go que suporte 49. Se a App Store/Play Store estiver com versão diferente, rode com Dev Client / EAS.
-
-iOS real device: sem macOS/Xcode a instalação direta não é trivial — prefere EAS/TestFlight ou Expo Dev Client via EAS.
-
-Erros de versão do Android SDK: se usar emulador e o expo start não abrir no emulador, confirme que o Android SDK está instalado e a variável ANDROID_HOME/ANDROID_SDK_ROOT está apontando para o local correto (ex.: C:\Users\<you>\AppData\Local\Android\Sdk no Windows).
-
-Problemas com módulos nativos (ex.: react-native-maps): podem demandar configuração extra no app.json / app.config.js e builds nativos (EAS) para funcionar no dispositivo real.
-
-Comandos úteis (resumo)
-# instalar dependências
-npm install
-
-# iniciar dev server
-npx expo start
-
-# abrir android emulator (opção)
-npx expo start --android
-
-# web
 npx expo start --web
+```
 
-# (opcional) build dev client iOS/Android via EAS (requer configuração)
-eas build --profile development --platform ios
-eas build --profile development --platform android
+## 🧪 Comandos Úteis
+```
+npm install                 # instalar dependências
+npx expo start              # rodar projeto
+npx expo start --android    # abrir no Android
+npx expo start --web        # rodar na web
+eas build --platform ios    # build iOS
+eas build --platform android# build Android
+```
